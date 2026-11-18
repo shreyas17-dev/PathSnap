@@ -6,7 +6,8 @@ followed by HMM/Viterbi decoding. Deployment: two laptops (model + FastAPI on La
 
 **Design decisions and their evidence:** [`docs/DECISIONS.md`](docs/DECISIONS.md) ·
 **Team roles:** [`docs/TEAM_PLAN.md`](docs/TEAM_PLAN.md) ·
-**All results on one page:** `results/REVIEW.html` (open in a browser)
+**All results on one page:** `results/REVIEW.html` (open in a browser) ·
+**Live demo on two laptops:** [`docs/DEMO.md`](docs/DEMO.md)
 
 ## Pipeline
 ```
@@ -20,7 +21,8 @@ raw trip files ──► per-trip UTM projection ──► monotonic label align
 ## Repository layout
 ```
 configs/config.yaml        every parameter + the evidence file behind it
-src/pathsnap/              library code (io, geo, network, labels, candidates, features, maps)
+src/pathsnap/              library code (io, geo, network, labels, candidates, features, models,
+                           plotting, hmm, pipeline, maps)
 scripts/                   numbered, runnable steps, each writing evidence to results/
   01_eda.py                dataset inventory, quality checks, plots, Folium maps
   02_build_labels.py       per-point reference arcs (monotonic alignment vs naive)
@@ -31,12 +33,13 @@ scripts/                   numbered, runnable steps, each writing evidence to re
   07_bayes_opt_xgb.py      Optuna TPE tuning of XGBoost -> results/optuna/, models/final/
   08_feature_ablation.py   v1 vs v1+v2 features on train CV -> results/ablation/
   09_hmm_viterbi.py        HMM decoder tuned on train OOF; classifier vs HMM -> results/hmm/, models/final/hmm_config.json
-  export_csv.py            preprocessed data as CSV -> data/processed/csv/
-api/main.py                FastAPI backend (contract: docs/API_CONTRACT.md), start with run_api.bat
+  10_final_evaluation.py   frozen model + HMM on evaluator_test, run once -> results/final_evaluation/, results/maps/
   99_build_review_page.py  builds results/REVIEW.html
+  export_csv.py            preprocessed data as CSV -> data/processed/csv/
 results/                   committed evidence: CSV, PNG, HTML maps
 models/                    final trained artifacts (committed)
-api/  ui/                  FastAPI backend (Laptop 1) / evaluator UI (Laptop 2)
+api/main.py                FastAPI backend, Laptop 1 (contract: docs/API_CONTRACT.md), start with run_api.bat
+ui/                        evaluator UI, Laptop 2 (plain HTML/JS + Leaflet, see ui/README.md)
 data/raw, data/processed   git-ignored
 docs/                      decision log, team plan
 ```
@@ -70,6 +73,7 @@ python scripts\05_train_compare.py --models LogisticRegression GaussianNB Random
 python scripts\07_bayes_opt_xgb.py --trials 40 --timeout-min 45
 python scripts\09_hmm_viterbi.py
 python scripts\06_evaluate_holdout.py
+python scripts\10_final_evaluation.py
 python scripts\99_build_review_page.py
 run_api.bat
 ```
