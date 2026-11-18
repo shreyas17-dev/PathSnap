@@ -1,0 +1,67 @@
+# PathSnap — single source of truth for paths, seeds and pipeline parameters.
+# Every script reads this file, so a reviewer can see every setting in one place.
+# Values marked "DATA-DRIVEN" were chosen from a study script; the evidence file is named next to them.
+
+seed: 42
+
+paths:
+  # Folder containing train/ and student_test/ (and evaluator_test/ on the API laptop only).
+  # Default = the organiser "Student folder" next to the repo (Desktop/ML 1811/Student folder).
+  # Teammates with another layout: edit this line, or copy the data into data/raw and set data/raw.
+  raw_dir: "../Student folder"
+  processed_dir: data/processed     # generated parquet files (git-ignored, re-creatable)
+  results_dir: results              # small evidence files: CSV, PNG, HTML maps (committed)
+  models_dir: models                # trained artifacts
+
+splits:
+  train: train                      # 80 trips: fitting + GroupKFold CV + Bayesian optimisation
+  student_test: student_test        # 10 trips: development-stage comparison only
+  evaluator_test: evaluator_test    # 10 trips: NEVER read by any training / selection script
+
+geo:
+  # Trips are spread across the globe, so one fixed CRS is wrong.
+  # Each trip is projected to the UTM zone of its own GPS centroid (metres, <0.1% scale error locally).
+  # Evidence: results/eda/projection_check.csv
+  projection: per_trip_utm
+
+time:
+  # A step longer than this is treated as a GPS gap (no speed/heading across it; HMM transition relaxed).
+  # Why 10 s: 98.65% of steps are <= 2 s and only 0.29% exceed 10 s; at the median moving speed
+  # (11.4 m/s) 10 s is ~114 m ~ 2 x candidate radius, i.e. beyond it consecutive candidate disks stop
+  # overlapping. Evidence: results/eda/sampling_intervals.csv, sampling_interval_hist.png, EDA_SUMMARY.md
+  gap_threshold_s: 10
+
+labels:
+  # Per-point reference arcs are derived by a monotonic (order-preserving) alignment of the
+  # GPS sequence onto the ordered .route arcs. Evidence: results/preprocessing/label_alignment_*.csv
+  method: monotonic_dp
+  # Points whose aligned reference arc is farther than this are flagged as unreliable labels.
+  unreliable_label_dist_m: 100
+
+candidates:
+  # Densification step used to find every arc within the radius (exact distance is computed afterwards).
+  densify_step_m: 10
+  # Candidates are collected up to this radius in the radius study, then cut to `radius_m`.
+  study_max_radius_m: 200
+  # DATA-DRIVEN (scripts/03_candidate_radius_study.py, train only) — smallest R with reliable-point
+  # miss rate <= 1%: R=60 -> 0.95% miss, 11.1 candidates/point. Evidence: results/preprocessing/radius_study.*
+  radius_m: 60
+  # If a point has NO arc within radius_m (mostly vehicle parked off the network), take its k nearest
+  # arcs anyway so every observation still receives a prediction. k=2 keeps both directions of a road.
+  fallback_k: 2
+  # Optional hard cap on candidates per point (nearest first). null = no cap.
+  # Not needed: p95 = 36 candidates at R=60; a top-30 cap would still lose 0.19% of true arcs.
+  # Evidence: results/preprocessing/rank_study.csv
+  max_candidates: null
+
+features:
+  # Half-window (points) for the trajectory-context features (mean distance of neighbours to the arc).
+  context_half_window: 2
+  # Below this speed (m/s) the GPS heading is considered undefined (vehicle stationary / jitter).
+  min_speed_for_heading_mps: 1.0
+
+models:
+  # Every k-th GPS point (with all its candidates) is used for CV/fitting. 1 Hz neighbours are
+  # near-duplicates, so k=3 keeps the information while cutting compute ~3x. Same rows for every model.
+  point_stride: 3
+  cv_folds: 5            # GroupKFold by trip_id

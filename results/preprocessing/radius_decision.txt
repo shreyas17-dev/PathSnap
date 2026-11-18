@@ -1,0 +1,6 @@
+Rule: smallest R in [10, 15, 20, 25, 30, 40, 50, 60, 75, 100, 150, 200] with reliable-point miss rate <= 1% (train only).
+Chosen R = 60 m
+  miss rate reliable = 0.9493%, all points = 10.7041%
+  mean candidates/point = 11.1, p95 = 36, positive rate = 0.0803
+Top-K cap check: reference arc within top-30 nearest = 99.8094%
+Set candidates.radius_m in configs/config.yaml to this value.

@@ -1,0 +1,7 @@
+split,baseline,top1_all,top1_reliable
+train,nearest arc,0.49995921637870233,0.5541444668586363
+train,"nearest arc, heading tie-break",0.7159348805519703,0.7937373920171176
+train,oracle (upper bound = 1 - miss rate),0.8976091201773367,0.9948476929054647
+student_test,nearest arc,0.5395093945720251,0.5399885075484512
+student_test,"nearest arc, heading tie-break",0.8192066805845512,0.8199341795956746
+student_test,oracle (upper bound = 1 - miss rate),0.9986951983298539,0.9995820926709502

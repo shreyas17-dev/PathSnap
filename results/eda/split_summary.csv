@@ -1,0 +1,3 @@
+split,trips,points,points_median,points_min,points_max,duration_h,path_km,arcs_median,route_arcs_median
+student_test,10,19160,1420.0,262,3958,5.625,297.56494732237354,13145.0,250.0
+train,80,208417,1529.0,361,19313,126.23121083333335,2981.888956045622,19526.5,280.0

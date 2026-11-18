@@ -1,0 +1,48 @@
+# ---------- data (organiser-provided / re-creatable; never commit) ----------
+data/raw/*
+!data/raw/README.md
+data/processed/*
+!data/processed/.gitkeep
+*.parquet
+*.zip
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# ---------- environments ----------
+.venv/
+venv/
+env/
+.conda/
+.env
+.env.*
+!.env.example
+
+# ---------- IDE / OS ----------
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------- training scratch (final artifacts in models/ ARE committed) ----------
+models/tmp/
+models/checkpoints/
+runs/
+wandb/
+mlruns/
+lightning_logs/
+catboost_info/
+*.log
+
+# ---------- UI build output ----------
+ui/node_modules/
+ui/dist/
+ui/build/
