@@ -1,0 +1,7 @@
+{
+  "beta": 2.0,
+  "w": 0.5,
+  "max_route_m": 800.0,
+  "chosen_by": "max train OOF Top-1 (reliable) over grid",
+  "train_oof_top1_reliable": 0.9289109364105239
+}
