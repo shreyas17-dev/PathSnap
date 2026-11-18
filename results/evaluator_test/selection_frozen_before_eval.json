@@ -1,0 +1,14 @@
+{
+  "selected_model": "XGBoost",
+  "selected_by": "CV Top-1 tie -> CV log loss -> speed (scripts/05_train_compare.py)",
+  "selection_file_mtime": "Wed Nov 18 14:14:54 2026",
+  "frozen_at": "Wed Nov 18 14:25:45 2026",
+  "models_evaluated": [
+    "GaussianNB",
+    "LogisticRegression",
+    "MLP",
+    "RandomForest",
+    "XGBoost",
+    "XGBoost_tuned"
+  ]
+}

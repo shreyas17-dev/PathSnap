@@ -1,0 +1,37 @@
+=== HMM run Wed Nov 18 14:50:11 2026 | device=cuda | tuned XGBoost params loaded
+1) out-of-fold probabilities on train
+  OOF fold 0: fit on 584,331 rows, predicted 577,719 rows (6s)
+  OOF fold 1: fit on 635,582 rows, predicted 386,750 rows (3s)
+  OOF fold 2: fit on 615,129 rows, predicted 447,177 rows (5s)
+  OOF fold 3: fit on 585,883 rows, predicted 551,857 rows (2s)
+  OOF fold 4: fit on 635,615 rows, predicted 386,477 rows (1s)
+2) precomputing route distances (train)
+  prepared 80 train trips in 121s
+  classifier-only train OOF: Top-1 all=0.7899 reliable=0.8758
+  beta=  1.0 w=0.5: HMM Top-1 reliable=0.9246 all=0.8341 continuity=0.9876
+  beta=  1.0 w=1.0: HMM Top-1 reliable=0.9265 all=0.8357 continuity=0.9878
+  beta=  1.0 w=2.0: HMM Top-1 reliable=0.9241 all=0.8336 continuity=0.9879
+  beta=  2.0 w=0.5: HMM Top-1 reliable=0.9289 all=0.8379 continuity=0.9879
+  beta=  2.0 w=1.0: HMM Top-1 reliable=0.9270 all=0.8362 continuity=0.9880
+  beta=  2.0 w=2.0: HMM Top-1 reliable=0.9230 all=0.8325 continuity=0.9881
+  beta=  5.0 w=0.5: HMM Top-1 reliable=0.9259 all=0.8352 continuity=0.9881
+  beta=  5.0 w=1.0: HMM Top-1 reliable=0.9226 all=0.8321 continuity=0.9881
+  beta=  5.0 w=2.0: HMM Top-1 reliable=0.9167 all=0.8268 continuity=0.9878
+  beta= 10.0 w=0.5: HMM Top-1 reliable=0.9228 all=0.8323 continuity=0.9881
+  beta= 10.0 w=1.0: HMM Top-1 reliable=0.9170 all=0.8271 continuity=0.9879
+  beta= 10.0 w=2.0: HMM Top-1 reliable=0.9113 all=0.8219 continuity=0.9872
+  beta= 20.0 w=0.5: HMM Top-1 reliable=0.9169 all=0.8270 continuity=0.9879
+  beta= 20.0 w=1.0: HMM Top-1 reliable=0.9122 all=0.8227 continuity=0.9872
+  beta= 20.0 w=2.0: HMM Top-1 reliable=0.9070 all=0.8180 continuity=0.9861
+  beta= 50.0 w=0.5: HMM Top-1 reliable=0.9109 all=0.8215 continuity=0.9870
+  beta= 50.0 w=1.0: HMM Top-1 reliable=0.9061 all=0.8172 continuity=0.9856
+  beta= 50.0 w=2.0: HMM Top-1 reliable=0.9001 all=0.8117 continuity=0.9834
+3) best decoder: beta=2.0 w=0.5 -> models/final/hmm_config.json
+4) student_test with the final tuned model
+  prepared 10 student_test trips in 9s
+   partition           method  top1_all  top1_reliable  continuity  route_f1  route_precision  route_recall
+ train (OOF)  classifier only    0.7899         0.8758      0.9585    0.8763           0.8707        0.8921
+ train (OOF) classifier + HMM    0.8379         0.9289      0.9879    0.9222           0.9460        0.9044
+student_test  classifier only    0.8980         0.8988      0.9663    0.8959           0.8970        0.8991
+student_test classifier + HMM    0.9400         0.9409      0.9973    0.9379           0.9701        0.9100
+map: results/maps/hmm_student_test_00000076.html

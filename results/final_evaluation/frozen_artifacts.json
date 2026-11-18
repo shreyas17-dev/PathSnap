@@ -1,0 +1,13 @@
+{
+  "classifier": "models/final/xgboost_tuned.joblib",
+  "classifier_mtime": "Wed Nov 18 14:22:04 2026",
+  "hmm_config": {
+    "beta": 2.0,
+    "w": 0.5,
+    "max_route_m": 800.0,
+    "chosen_by": "max train OOF Top-1 (reliable) over grid",
+    "train_oof_top1_reliable": 0.9289109364105239
+  },
+  "hmm_config_mtime": "Wed Nov 18 14:54:05 2026",
+  "evaluated_at": "Wed Nov 18 15:23:13 2026"
+}
