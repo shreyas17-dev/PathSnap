@@ -1,0 +1,46 @@
+{
+  "model": "MLP",
+  "family": "Neural network",
+  "params": {
+    "hidden_layer_sizes": [
+      64,
+      32
+    ],
+    "activation": "relu",
+    "alpha": 0.0001,
+    "batch_size": 1024,
+    "learning_rate_init": 0.001,
+    "epochs": 25
+  },
+  "max_train_rows": null,
+  "notes": "2 hidden layers, Adam, trained epoch by epoch to record train/val loss",
+  "seed": 42,
+  "features": [
+    "dist_m",
+    "dist_rank",
+    "dist_minus_min",
+    "dist_ratio",
+    "n_cands",
+    "t_proj",
+    "at_endpoint",
+    "heading_diff",
+    "heading_diff_undirected",
+    "heading_valid",
+    "ctx_mean_dist",
+    "ctx_max_dist",
+    "smooth_dist",
+    "speed",
+    "dt_prev",
+    "gap_before",
+    "gap_after",
+    "arc_len",
+    "has_reverse",
+    "in_deg_u",
+    "out_deg_v",
+    "heading_diff_ff",
+    "along_cos_w3",
+    "along_speed_w3",
+    "twin_hd_adv",
+    "hd_rank_near"
+  ]
+}

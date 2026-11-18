@@ -1,0 +1,164 @@
+[12:08:12] === run start | stride=3 folds=5 gpu=True models=['LogisticRegression', 'GaussianNB', 'KNN', 'RandomForest', 'ExtraTrees', 'HistGradientBoosting', 'XGBoost', 'LightGBM', 'MLP']
+[12:08:12] train rows=764,135 (reliable, strided) points=69,495 trips=80 | student_test rows=264,674 points=19,160
+[12:08:12] --- LogisticRegression [Linear] params={'C': 1.0, 'penalty': 'l2', 'solver': 'lbfgs', 'max_iter': 1000}
+[12:08:16]   LogisticRegression fold 0: val Top-1(rel)=0.8404 macroF1=0.9033 logloss=0.0979 | train Top-1=0.2997 | fit 2.4s
+[12:08:19]   LogisticRegression fold 1: val Top-1(rel)=0.8464 macroF1=0.9035 logloss=0.0924 | train Top-1=0.2988 | fit 2.1s
+[12:08:21]   LogisticRegression fold 2: val Top-1(rel)=0.8210 macroF1=0.9027 logloss=0.0816 | train Top-1=0.3021 | fit 2.2s
+[12:08:24]   LogisticRegression fold 3: val Top-1(rel)=0.8562 macroF1=0.9162 logloss=0.0773 | train Top-1=0.3001 | fit 2.2s
+[12:08:28]   LogisticRegression fold 4: val Top-1(rel)=0.7988 macroF1=0.8839 logloss=0.0685 | train Top-1=0.2976 | fit 2.5s
+[12:08:42] === run start | stride=3 folds=5 gpu=True models=['LogisticRegression', 'GaussianNB', 'KNN', 'RandomForest', 'ExtraTrees', 'HistGradientBoosting', 'XGBoost', 'LightGBM', 'MLP']
+[12:08:42] train rows=764,135 (reliable, strided) points=69,495 trips=80 | student_test rows=264,674 points=19,160
+[12:08:42] --- LogisticRegression [Linear] params={'C': 1.0, 'penalty': 'l2', 'solver': 'lbfgs', 'max_iter': 1000}
+[12:08:45]   LogisticRegression fold 0: val Top-1(rel)=0.8404 macroF1=0.9033 logloss=0.0979 | train Top-1=0.2997 | fit 2.2s
+[12:08:48]   LogisticRegression fold 1: val Top-1(rel)=0.8464 macroF1=0.9035 logloss=0.0924 | train Top-1=0.2988 | fit 2.1s
+[12:08:55]   LogisticRegression fold 2: val Top-1(rel)=0.8210 macroF1=0.9027 logloss=0.0816 | train Top-1=0.3021 | fit 4.7s
+[12:08:58]   LogisticRegression fold 3: val Top-1(rel)=0.8562 macroF1=0.9162 logloss=0.0773 | train Top-1=0.3001 | fit 2.1s
+[12:09:01]   LogisticRegression fold 4: val Top-1(rel)=0.7988 macroF1=0.8839 logloss=0.0685 | train Top-1=0.2976 | fit 2.3s
+[12:09:07]   LogisticRegression student_test: Top-1(all)=0.8593 macroF1=0.9149 logloss=0.0651 continuity=0.9647
+[12:09:07] --- LogisticRegression done in 25s
+[12:09:07] --- GaussianNB [Probabilistic] params={'var_smoothing': 1e-09}
+[12:09:10]   GaussianNB fold 0: val Top-1(rel)=0.8211 macroF1=0.7689 logloss=1.3127 | train Top-1=0.2979 | fit 1.4s
+[12:09:16]   GaussianNB fold 1: val Top-1(rel)=0.8253 macroF1=0.7802 logloss=1.2061 | train Top-1=0.2976 | fit 2.8s
+[12:09:18]   GaussianNB fold 2: val Top-1(rel)=0.8135 macroF1=0.7850 logloss=0.8890 | train Top-1=0.3000 | fit 1.4s
+[12:09:20]   GaussianNB fold 3: val Top-1(rel)=0.8219 macroF1=0.7742 logloss=0.9240 | train Top-1=0.2986 | fit 1.4s
+[12:09:22]   GaussianNB fold 4: val Top-1(rel)=0.7842 macroF1=0.7774 logloss=0.6120 | train Top-1=0.2965 | fit 1.4s
+[12:09:25]   GaussianNB student_test: Top-1(all)=0.8335 macroF1=0.7779 logloss=0.9103 continuity=0.9577
+[12:09:25] --- GaussianNB done in 17s
+[12:09:25] --- RandomForest [Ensemble (bagging)] params={'n_estimators': 200, 'max_depth': None, 'min_samples_leaf': 5, 'max_features': 'sqrt', 'n_jobs': -1}
+[12:12:12]   RandomForest fold 0: val Top-1(rel)=0.8395 macroF1=0.9125 logloss=0.0805 | train Top-1=0.3187 | fit 160.9s
+[12:13:59]   RandomForest fold 1: val Top-1(rel)=0.8450 macroF1=0.9115 logloss=0.0758 | train Top-1=0.3179 | fit 106.1s
+[12:14:26]   RandomForest fold 2: val Top-1(rel)=0.8284 macroF1=0.9130 logloss=0.0698 | train Top-1=0.3187 | fit 25.2s
+[12:15:59]   RandomForest fold 3: val Top-1(rel)=0.8587 macroF1=0.9213 logloss=0.0581 | train Top-1=0.3160 | fit 87.1s
+[12:18:29]   RandomForest fold 4: val Top-1(rel)=0.7990 macroF1=0.8902 logloss=0.0573 | train Top-1=0.3146 | fit 143.9s
+[12:23:10]   RandomForest student_test: Top-1(all)=0.8675 macroF1=0.9251 logloss=0.0498 continuity=0.9636
+[12:23:10] --- RandomForest done in 826s
+[12:23:10] --- XGBoost [Boosting] params={'n_estimators': 400, 'learning_rate': 0.1, 'max_depth': 6, 'subsample': 0.8, 'colsample_bytree': 0.8, 'min_child_weight': 1.0, 'reg_lambda': 1.0, 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'logloss'}
+[12:23:29]   XGBoost fold 0: val Top-1(rel)=0.8424 macroF1=0.9098 logloss=0.0827 | train Top-1=0.3156 | fit 15.7s
+[12:23:39]   XGBoost fold 1: val Top-1(rel)=0.8375 macroF1=0.9052 logloss=0.0804 | train Top-1=0.3148 | fit 8.0s
+[12:23:50]   XGBoost fold 2: val Top-1(rel)=0.8291 macroF1=0.9120 logloss=0.0644 | train Top-1=0.3161 | fit 8.0s
+[12:24:01]   XGBoost fold 3: val Top-1(rel)=0.8615 macroF1=0.9230 logloss=0.0567 | train Top-1=0.3126 | fit 8.8s
+[12:24:11]   XGBoost fold 4: val Top-1(rel)=0.8050 macroF1=0.8916 logloss=0.0577 | train Top-1=0.3115 | fit 8.2s
+[12:24:21]   XGBoost student_test: Top-1(all)=0.8781 macroF1=0.9296 logloss=0.0469 continuity=0.9672
+[12:24:21] --- XGBoost done in 71s
+[12:24:21] --- MLP [Neural network] params={'hidden_layer_sizes': (64, 32), 'activation': 'relu', 'alpha': 0.0001, 'batch_size': 1024, 'learning_rate_init': 0.001, 'epochs': 25}
+[12:27:55]   MLP fold 0: val Top-1(rel)=0.8419 macroF1=0.9075 logloss=0.0868 | train Top-1=0.3072 | fit 208.9s
+[12:31:51]   MLP fold 1: val Top-1(rel)=0.8449 macroF1=0.9063 logloss=0.0800 | train Top-1=0.3065 | fit 233.8s
+[12:35:20]   MLP fold 2: val Top-1(rel)=0.8317 macroF1=0.9061 logloss=0.0716 | train Top-1=0.3079 | fit 208.3s
+[12:38:00]   MLP fold 3: val Top-1(rel)=0.8628 macroF1=0.9243 logloss=0.0600 | train Top-1=0.3044 | fit 159.0s
+[12:39:11]   MLP fold 4: val Top-1(rel)=0.8039 macroF1=0.8874 logloss=0.0587 | train Top-1=0.3039 | fit 70.1s
+[12:40:37]   MLP student_test: Top-1(all)=0.8720 macroF1=0.9244 logloss=0.0502 continuity=0.9697
+[12:40:37] --- MLP done in 976s
+[12:40:37] # Model selection (auto-generated by scripts/05_train_compare.py)
+
+Primary metric: mean GroupKFold CV observation-level Top-1 accuracy on reliable points (train partition).
+Tie-breaker: CV log loss (probability quality matters for HMM emissions). Student-test is reported, not used to tune.
+
+| rank | model | CV Top-1 | std | CV log loss | train-val Top-1 gap | student-test Top-1 | µs/row |
+|---|---|---|---|---|---|---|---|
+| 1 | MLP | 0.8370 | 0.0216 | 0.0714 | -0.5311 | 0.8720 | 0.76 |
+| 2 | XGBoost | 0.8351 | 0.0206 | 0.0684 | -0.5210 | 0.8781 | 0.95 |
+| 3 | RandomForest | 0.8341 | 0.0225 | 0.0683 | -0.5169 | 0.8675 | 14.09 |
+| 4 | LogisticRegression | 0.8325 | 0.0228 | 0.0835 | -0.5329 | 0.8593 | 1.14 |
+| 5 | GaussianNB | 0.8132 | 0.0168 | 0.9888 | -0.5150 | 0.8335 | 0.68 |
+
+Leader: **MLP**. Margin over XGBoost: +0.0019 Top-1 (combined fold std 0.0299).
+If the margin is within one combined std, prefer the model with lower log loss / faster inference.
+[12:47:32] # Model selection (auto-generated by scripts/05_train_compare.py)
+
+Primary metric: mean GroupKFold CV observation-level Top-1 accuracy on reliable points (train partition).
+Tie-breaker: CV log loss (probability quality matters for HMM emissions). Student-test is reported, not used to tune.
+
+| rank | model | CV Top-1 | std | CV log loss | train-val Macro-F1 gap | student-test Top-1 | µs/row |
+|---|---|---|---|---|---|---|---|
+| 1 | MLP | 0.8370 | 0.0216 | 0.0714 | +0.0137 | 0.8720 | 0.76 |
+| 2 | XGBoost | 0.8351 | 0.0206 | 0.0684 | +0.0404 | 0.8781 | 0.95 |
+| 3 | RandomForest | 0.8341 | 0.0225 | 0.0683 | +0.0497 | 0.8675 | 14.09 |
+| 4 | LogisticRegression | 0.8325 | 0.0228 | 0.0835 | +0.0017 | 0.8593 | 1.14 |
+| 5 | GaussianNB | 0.8132 | 0.0168 | 0.9888 | +0.0007 | 0.8335 | 0.68 |
+
+Leader: **MLP**. Margin over XGBoost: +0.0019 Top-1 (combined fold std 0.0299).
+If the margin is within one combined std, prefer the model with lower log loss / faster inference.
+[12:58:23] === run start | stride=3 folds=5 gpu=True models=['LogisticRegression', 'GaussianNB', 'KNN', 'RandomForest', 'ExtraTrees', 'HistGradientBoosting', 'XGBoost', 'LightGBM', 'MLP']
+[12:58:24] train rows=764,135 (reliable, strided) points=69,495 trips=80 | student_test rows=264,674 points=19,160
+[12:58:24] --- LightGBM [Boosting] params={'n_estimators': 400, 'learning_rate': 0.05, 'num_leaves': 63, 'min_child_samples': 20, 'subsample': 0.8, 'subsample_freq': 1, 'colsample_bytree': 0.8, 'reg_lambda': 0.0}
+[12:58:36]   LightGBM fold 0: val Top-1(rel)=0.8427 macroF1=0.9116 logloss=0.0824 | train Top-1=0.9125 | fit 8.0s
+[12:59:33]   LightGBM fold 1: val Top-1(rel)=0.8381 macroF1=0.9070 logloss=0.0812 | train Top-1=0.9157 | fit 55.0s
+[12:59:42]   LightGBM fold 2: val Top-1(rel)=0.8307 macroF1=0.9122 logloss=0.0637 | train Top-1=0.9187 | fit 7.0s
+[12:59:51]   LightGBM fold 3: val Top-1(rel)=0.8619 macroF1=0.9233 logloss=0.0669 | train Top-1=0.9030 | fit 6.8s
+[12:59:59]   LightGBM fold 4: val Top-1(rel)=0.8067 macroF1=0.8926 logloss=0.0572 | train Top-1=0.9173 | fit 6.7s
+[13:00:07]   LightGBM student_test: Top-1(all)=0.8741 macroF1=0.9280 logloss=0.0476 continuity=0.9666
+[13:00:07] --- LightGBM done in 103s
+[13:00:07] # Model selection (auto-generated by scripts/05_train_compare.py)
+
+Primary metric: mean GroupKFold CV observation-level Top-1 accuracy on reliable points (train partition).
+Tie-breaker: CV log loss (probability quality matters for HMM emissions). Student-test is reported, not used to tune.
+
+| rank | model | CV Top-1 | std | CV log loss | train-val Macro-F1 gap | student-test Top-1 | µs/row |
+|---|---|---|---|---|---|---|---|
+| 1 | MLP | 0.8370 | 0.0216 | 0.0714 | +0.0137 | 0.8720 | 0.76 |
+| 2 | LightGBM | 0.8360 | 0.0200 | 0.0703 | +0.0394 | 0.8741 | 2.32 |
+| 3 | XGBoost | 0.8351 | 0.0206 | 0.0684 | +0.0404 | 0.8781 | 0.95 |
+| 4 | RandomForest | 0.8341 | 0.0225 | 0.0683 | +0.0497 | 0.8675 | 14.09 |
+| 5 | LogisticRegression | 0.8325 | 0.0228 | 0.0835 | +0.0017 | 0.8593 | 1.14 |
+| 6 | GaussianNB | 0.8132 | 0.0168 | 0.9888 | +0.0007 | 0.8335 | 0.68 |
+
+Leader: **MLP**. Margin over LightGBM: +0.0010 Top-1 (combined fold std 0.0295).
+If the margin is within one combined std, prefer the model with lower log loss / faster inference.
+[14:03:55] === run start | stride=3 folds=5 gpu=True models=['LogisticRegression', 'GaussianNB', 'KNN', 'RandomForest', 'ExtraTrees', 'HistGradientBoosting', 'XGBoost', 'LightGBM', 'MLP']
+[14:03:55] train rows=764,135 (reliable, strided) points=69,495 trips=80 | student_test rows=264,674 points=19,160
+[14:03:55] --- LogisticRegression [Linear] params={'C': 1.0, 'penalty': 'l2', 'solver': 'lbfgs', 'max_iter': 1000}
+[14:04:00]   LogisticRegression fold 0: val Top-1(rel)=0.8734 macroF1=0.9225 logloss=0.0792 | train Top-1=0.8742 | fit 2.9s
+[14:04:03]   LogisticRegression fold 1: val Top-1(rel)=0.9073 macroF1=0.9360 logloss=0.0687 | train Top-1=0.8700 | fit 2.8s
+[14:04:07]   LogisticRegression fold 2: val Top-1(rel)=0.8678 macroF1=0.9264 logloss=0.0659 | train Top-1=0.8797 | fit 2.8s
+[14:04:10]   LogisticRegression fold 3: val Top-1(rel)=0.8798 macroF1=0.9265 logloss=0.0638 | train Top-1=0.8764 | fit 2.9s
+[14:04:14]   LogisticRegression fold 4: val Top-1(rel)=0.8349 macroF1=0.9033 logloss=0.0584 | train Top-1=0.8817 | fit 2.7s
+[14:04:18]   LogisticRegression student_test: Top-1(all)=0.8787 macroF1=0.9257 logloss=0.0545 continuity=0.9634
+[14:04:18] --- LogisticRegression done in 23s
+[14:04:18] --- GaussianNB [Probabilistic] params={'var_smoothing': 1e-09}
+[14:04:21]   GaussianNB fold 0: val Top-1(rel)=0.8478 macroF1=0.8083 logloss=0.7222 | train Top-1=0.8392 | fit 1.7s
+[14:04:24]   GaussianNB fold 1: val Top-1(rel)=0.8746 macroF1=0.8060 logloss=0.7092 | train Top-1=0.8397 | fit 1.7s
+[14:04:26]   GaussianNB fold 2: val Top-1(rel)=0.8409 macroF1=0.8305 logloss=0.4728 | train Top-1=0.8494 | fit 1.7s
+[14:04:29]   GaussianNB fold 3: val Top-1(rel)=0.8442 macroF1=0.8076 logloss=0.5028 | train Top-1=0.8451 | fit 1.7s
+[14:04:32]   GaussianNB fold 4: val Top-1(rel)=0.8028 macroF1=0.8321 logloss=0.3474 | train Top-1=0.8563 | fit 1.7s
+[14:04:35]   GaussianNB student_test: Top-1(all)=0.8503 macroF1=0.8146 logloss=0.5184 continuity=0.9580
+[14:04:35] --- GaussianNB done in 17s
+[14:04:35] --- RandomForest [Ensemble (bagging)] params={'n_estimators': 200, 'max_depth': None, 'min_samples_leaf': 5, 'max_features': 'sqrt', 'n_jobs': -1}
+[14:05:26]   RandomForest fold 0: val Top-1(rel)=0.8723 macroF1=0.9312 logloss=0.0637 | train Top-1=0.9523 | fit 46.7s
+[14:06:04]   RandomForest fold 1: val Top-1(rel)=0.9072 macroF1=0.9473 logloss=0.0495 | train Top-1=0.9530 | fit 36.9s
+[14:06:40]   RandomForest fold 2: val Top-1(rel)=0.8727 macroF1=0.9355 logloss=0.0590 | train Top-1=0.9627 | fit 34.9s
+[14:07:18]   RandomForest fold 3: val Top-1(rel)=0.8796 macroF1=0.9360 logloss=0.0503 | train Top-1=0.9545 | fit 36.0s
+[14:07:54]   RandomForest fold 4: val Top-1(rel)=0.8330 macroF1=0.9100 logloss=0.0493 | train Top-1=0.9597 | fit 35.1s
+[14:09:11]   RandomForest student_test: Top-1(all)=0.8850 macroF1=0.9370 logloss=0.0420 continuity=0.9615
+[14:09:11] --- RandomForest done in 276s
+[14:09:11] --- XGBoost [Boosting] params={'n_estimators': 400, 'learning_rate': 0.1, 'max_depth': 6, 'subsample': 0.8, 'colsample_bytree': 0.8, 'min_child_weight': 1.0, 'reg_lambda': 1.0, 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'logloss'}
+[14:09:15]   XGBoost fold 0: val Top-1(rel)=0.8758 macroF1=0.9319 logloss=0.0669 | train Top-1=0.9471 | fit 2.8s
+[14:09:18]   XGBoost fold 1: val Top-1(rel)=0.9048 macroF1=0.9442 logloss=0.0503 | train Top-1=0.9449 | fit 2.6s
+[14:09:22]   XGBoost fold 2: val Top-1(rel)=0.8733 macroF1=0.9315 logloss=0.0554 | train Top-1=0.9548 | fit 2.7s
+[14:09:25]   XGBoost fold 3: val Top-1(rel)=0.8792 macroF1=0.9347 logloss=0.0499 | train Top-1=0.9456 | fit 2.6s
+[14:09:29]   XGBoost fold 4: val Top-1(rel)=0.8413 macroF1=0.9116 logloss=0.0503 | train Top-1=0.9523 | fit 2.6s
+[14:09:32]   XGBoost student_test: Top-1(all)=0.9011 macroF1=0.9438 logloss=0.0391 continuity=0.9671
+[14:09:33] --- XGBoost done in 22s
+[14:09:33] --- MLP [Neural network] params={'hidden_layer_sizes': (64, 32), 'activation': 'relu', 'alpha': 0.0001, 'batch_size': 1024, 'learning_rate_init': 0.001, 'epochs': 25}
+[14:10:24]   MLP fold 0: val Top-1(rel)=0.8807 macroF1=0.9284 logloss=0.0700 | train Top-1=0.8999 | fit 49.8s
+[14:11:15]   MLP fold 1: val Top-1(rel)=0.9008 macroF1=0.9367 logloss=0.0590 | train Top-1=0.8993 | fit 50.2s
+[14:12:06]   MLP fold 2: val Top-1(rel)=0.8704 macroF1=0.9274 logloss=0.0622 | train Top-1=0.9062 | fit 50.1s
+[14:12:57]   MLP fold 3: val Top-1(rel)=0.8814 macroF1=0.9346 logloss=0.0532 | train Top-1=0.8986 | fit 50.1s
+[14:13:48]   MLP fold 4: val Top-1(rel)=0.8305 macroF1=0.9028 logloss=0.0531 | train Top-1=0.9100 | fit 50.5s
+[14:14:53]   MLP student_test: Top-1(all)=0.8926 macroF1=0.9373 logloss=0.0430 continuity=0.9675
+[14:14:54] --- MLP done in 321s
+[14:14:54] # Model selection (auto-generated by scripts/05_train_compare.py)
+
+Primary metric: mean GroupKFold CV observation-level Top-1 accuracy on reliable points (train partition).
+Tie-breaker: CV log loss (probability quality matters for HMM emissions). Student-test is reported, not used to tune.
+
+| rank | model | CV Top-1 | std | CV log loss | train-val Macro-F1 gap | student-test Top-1 | µs/row |
+|---|---|---|---|---|---|---|---|
+| 1 | XGBoost | 0.8749 | 0.0226 | 0.0546 | +0.0385 | 0.9011 | 0.34 |
+| 2 | RandomForest | 0.8730 | 0.0265 | 0.0544 | +0.0391 | 0.8850 | 1.64 |
+| 3 | MLP | 0.8728 | 0.0261 | 0.0595 | +0.0168 | 0.8926 | 0.67 |
+| 4 | LogisticRegression | 0.8726 | 0.0260 | 0.0672 | +0.0025 | 0.8787 | 0.38 |
+| 5 | GaussianNB | 0.8421 | 0.0257 | 0.5509 | +0.0004 | 0.8503 | 0.90 |
+| 6 | LightGBM | 0.8360 | 0.0200 | 0.0703 | +0.0394 | 0.8741 | 2.32 |
+
+Leader: **XGBoost**. Margin over RandomForest: +0.0019 Top-1 (combined fold std 0.0349).
+If the margin is within one combined std, prefer the model with lower log loss / faster inference.
