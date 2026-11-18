@@ -1,0 +1,7 @@
+{
+ "status": "ok",
+ "model": "XGBoost (Bayesian-tuned)",
+ "hmm": true,
+ "n_trips": 10,
+ "version": "1.0"
+}

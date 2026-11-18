@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PathSnap — Evaluator</title>
+  <!-- Leaflet 1.9.4 from CDN (needs internet on Laptop 2 for the library + OpenStreetMap tiles) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="mockBanner" class="mock-banner" hidden>
+    MOCK DATA — everything on screen comes from local sample files in <code>ui/mock/</code>, NOT the live API.
+    Untick “Mock mode” before the demo.
+  </div>
+  <div id="fileWarning" class="file-warning" hidden>
+    This page was opened as a file. Run it with <code>cd ui &amp;&amp; python -m http.server 5500</code>
+    and open <code>http://localhost:5500</code> instead.
+  </div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true"></span>
+      <span class="name">PathSnap</span>
+      <span class="sub">GPS map-matching · evaluator</span>
+    </div>
+    <div class="conn">
+      <label for="apiBase">API base URL</label>
+      <input id="apiBase" type="text" spellcheck="false" autocomplete="off" placeholder="http://192.168.1.10:8000">
+      <button id="testBtn" type="button">Test connection</button>
+      <span id="connStatus" class="status status-idle" role="status">Not tested</span>
+    </div>
+    <label class="mock-toggle" title="Read ui/mock/*.json instead of calling the API. Must be OFF for the real demo.">
+      <input type="checkbox" id="mockToggle"> Mock mode
+    </label>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <section class="card trips-card">
+        <div class="card-head">
+          <h2>Evaluation trips</h2>
+          <button id="reloadTripsBtn" type="button" class="link">Reload</button>
+        </div>
+        <div class="trip-cols" aria-hidden="true"><span>Trip ID</span><span>Points</span><span>Duration</span></div>
+        <ul id="tripList" class="trip-list" aria-label="Evaluation trips"></ul>
+        <button id="runBtn" type="button" class="primary" disabled>Run</button>
+        <p id="runHint" class="hint">Select a trip, then click Run (or double-click a trip).</p>
+      </section>
+
+      <section class="card history-card">
+        <div class="card-head">
+          <h2>Session history</h2>
+          <button id="clearHistoryBtn" type="button" class="link">Clear</button>
+        </div>
+        <ol id="historyList" class="history"></ol>
+        <p id="historyEmpty" class="hint">Trips you run appear here for comparison. Click one to select it, then Run again to redraw it from the API.</p>
+      </section>
+    </aside>
+
+    <section class="map-wrap">
+      <div id="map"></div>
+      <div id="spinner" class="spinner-overlay" hidden>
+        <div class="spinner" aria-hidden="true"></div>
+        <div id="spinnerText" class="spinner-text">Running…</div>
+      </div>
+    </section>
+
+    <aside class="results">
+      <div id="message" class="message" hidden></div>
+
+      <div id="resultsEmpty" class="empty">
+        <p><strong>No prediction yet.</strong></p>
+        <p>Pick a trip on the left and click <em>Run</em>. The route and metrics are computed on Laptop 1 for every run.</p>
+      </div>
+
+      <div id="resultsBody" hidden>
+        <div class="result-head">
+          <span>Trip <strong id="rTrip"></strong></span>
+          <span id="rMockTag" class="mock-tag" hidden>MOCK DATA</span>
+        </div>
+
+        <div class="big">
+          <div class="big-num" id="rBig">—</div>
+          <div class="big-label">Top-1 accuracy · classifier + HMM</div>
+        </div>
+
+        <table class="cmp">
+          <thead>
+            <tr><th></th><th>Classifier only</th><th>Classifier + HMM</th></tr>
+          </thead>
+          <tbody>
+            <tr><th>Top-1 accuracy</th><td id="cAcc"></td><td id="hAcc"></td></tr>
+            <tr><th>Route continuity</th><td id="cCont"></td><td id="hCont"></td></tr>
+            <tr><th>Correct points</th><td id="cCorr"></td><td id="hCorr"></td></tr>
+            <tr id="f1Row" hidden><th>Route F1</th><td id="cF1"></td><td id="hF1"></td></tr>
+          </tbody>
+        </table>
+
+        <h3>Timing (ms, measured on Laptop 1)</h3>
+        <dl class="kv">
+          <dt>Preprocess</dt><dd id="tPre"></dd>
+          <dt>Classifier</dt><dd id="tClf"></dd>
+          <dt>HMM</dt><dd id="tHmm"></dd>
+          <dt class="total">Total</dt><dd id="tTot" class="total"></dd>
+          <dt class="muted">Browser round-trip</dt><dd id="tRtt" class="muted"></dd>
+        </dl>
+
+        <h3>Run info</h3>
+        <dl class="kv">
+          <dt>Model</dt><dd id="iModel"></dd>
+          <dt>request_id</dt><dd id="iReq" class="mono"></dd>
+          <dt>Received</dt><dd id="iTime"></dd>
+        </dl>
+      </div>
+    </aside>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    // CDN blocked or no internet → fall back to the bundled copy in ui/vendor/leaflet/
+    if (!window.L) {
+      document.write('<link rel="stylesheet" href="vendor/leaflet/leaflet.css">');
+      document.write('<script src="vendor/leaflet/leaflet.js"><\/script>');
+    }
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>
